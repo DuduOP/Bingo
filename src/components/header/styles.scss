@@ -1,0 +1,17 @@
+$headerBg: #383232;
+$headerColor: #f2eded;
+
+header {
+  background: $headerBg;
+  color: $headerColor;
+
+  h3 {
+    margin: 0;
+    padding: 15px;
+
+    span {
+      font-weight: normal;
+      font-size: 1rem;
+    }
+  }
+}
