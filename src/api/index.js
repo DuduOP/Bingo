@@ -1,7 +1,16 @@
 const api = {
   getRooms: {
     url: '/api/rooms',
-    type: 'GET'
+    method: 'GET'
+  },
+  getOnlineUsers: {
+    url: '/api/online',
+    method: 'GET'
+  },
+  pushOnlineUser: {
+    url: '/api/online',
+    method: 'POST',
+    user: {}
   }
 }
 
