@@ -4,6 +4,7 @@ $headerColor: #f2eded;
 header {
   background: $headerBg;
   color: $headerColor;
+  position: relative;
 
   h3 {
     margin: 0;
@@ -13,5 +14,11 @@ header {
       font-weight: normal;
       font-size: 1rem;
     }
+  }
+
+  .currentUser {
+    position: absolute;
+    right: 10px;
+    top: 15px;
   }
 }

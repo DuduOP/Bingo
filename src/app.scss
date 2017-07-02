@@ -1,7 +1,42 @@
+$lgray-3: #333;
+$lgray-6: #666;
+$lgray-swat: #ececec;
+
 div, ul, li, form, input {
   box-sizing: border-box;
 }
 html, body {
   margin: 0;
   font-family: 'Verdana', 'Arial', sans-serif;
+}
+input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid $lgray-3;
+}
+
+.appContainer {
+  .userForm {
+    width: 320px;
+    margin: 0 auto;
+
+    h3 {
+      text-align: center;
+      color: $lgray-3
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid $lgray-6;
+      background: $lgray-swat;
+    }
+  }
+
 }
