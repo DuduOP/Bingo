@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import Header from './header';
 import OnlineList from './onlineList';
-import JoinForm from './joinForm';
 
-import onlineApi from '../api/online';
+import UsersAPI from '../api/users';
 
 export default class App extends Component {
   state = {
@@ -13,14 +12,26 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.username !== '') {
+    if (localStorage.username && localStorage.username !== '') {
       this.setState({username: localStorage.username});
     }
   }
 
   clickJoin() {
-    this.setState({username: this.usernameInput.value});
-    localStorage.username = this.usernameInput.value;
+    const username = this.usernameInput.value
+
+    this.setState({username: username});
+    localStorage.username = username;
+
+    UsersAPI.pushOnlineUser.body = JSON.stringify({username: username});
+    UsersAPI.pushOnlineUser.headers.append('Content-Type', 'application/json');
+
+    console.log(UsersAPI.pushOnlineUser);
+
+    fetch(UsersAPI.baseUrl, UsersAPI.pushOnlineUser)
+      .then(response => response.json())
+      .then(data => console.log(data.message))
+      .catch(error => console.error(error));
   }
 
   render() {

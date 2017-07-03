@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import onlineApi from '../../api/online';
+import UsersAPI from '../../api/users';
 import styles from './styles.scss';
 
 export default class OnlineList extends Component {

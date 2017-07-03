@@ -11,6 +11,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from './webpack.config';
 import serverConfig from './server.config';
 
+import API from './server/api';
+
 const app = express();
 const compiler = webpack(webpackConfig);
 
@@ -26,4 +28,5 @@ app.get('/', (req, res) => {
 
 app.listen(3000, (req, res) => {
   console.log('Server started at localhost:3000');
+  API(app);
 });
