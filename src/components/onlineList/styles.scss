@@ -1,0 +1,8 @@
+$asideBorder: #e5e5e5;
+
+aside {
+  float: right;
+  height: auto;
+  padding: 15px;
+  border-left: 1px solid $asideBorder;
+}

@@ -8,7 +8,7 @@ export default (app) => {
   app.post('/api/online', (req, res) => {
     if (req.body) {
       app.onlineUsers.push(req.body.user);
-      req.send(JSON.stringify(app.onlineUsers));
+      req.send(JSON.stringify({message: 'SUCCESS'}));
     }
   });
 }

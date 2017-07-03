@@ -1,51 +1,48 @@
 import React, { Component } from 'react';
+
 import Header from './header';
+import OnlineList from './onlineList';
+import JoinForm from './joinForm';
 
 import onlineApi from '../api/online';
 
 export default class App extends Component {
   state = {
-    username: null,
-    showLogin: true
+    shouldUpdateList: false,
+    username: ''
   }
 
   componentDidMount() {
-    if (localStorage.user) {
-      this.setState(JSON.parse(localStorage.user));
+    if (localStorage.username !== '') {
+      this.setState({username: localStorage.username});
     }
   }
 
-  handleChange(e) {
-    this.setState({ username: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState({  showLogin: false });
-    localStorage.user = JSON.stringify({
-      username: this.state.username,
-      showLogin: false
-    });
+  clickJoin() {
+    this.setState({username: this.usernameInput.value});
+    localStorage.username = this.usernameInput.value;
   }
 
   render() {
     return(
       <div className="appContainer">
-        <Header currentUser={this.state.username} />
+        <Header
+          currentUser={this.state.username}
+          shouldUpdateList={this.state.shouldUpdateList}
+        />
         {
-          this.state.showLogin ?
-            <form className="userForm" onSubmit={::this.handleSubmit}>
-              <h3>Enter your username</h3>
-              <input
-                name="username"
-                placeholder="username"
-                value={this.state.username || ''}
-                onChange={::this.handleChange}
-              />
-              <button type="submit">Join</button>
-            </form>
-          :
+          this.state.username !== '' ?
             null
+          :
+          <div className="joinInput">
+            <h3>Enter username</h3>
+            <input
+              type="text"
+              name="username"
+              ref={input => this.usernameInput = input}
+            />
+            <button onClick={::this.clickJoin}>Join</button>
+          </div>
         }
       </div>
     );
